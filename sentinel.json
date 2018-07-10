@@ -1,0 +1,13 @@
+{
+  "rules": [
+    {
+      "name": "линтим ts",
+      "mask": ".ts$",
+      "separate": true,
+      "ignoreErrors": true,
+      "commands": [
+        "node_modules/.bin/tslint ${filename}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "_from": "git-sentinel",
+  "_id": "git-sentinel@0.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-UOhmidQbNQqEkH0OOX244P34LeMPnMqwVK0ND8Ig3wXijB3w9G0DFzhON/EELkS8r36rgMB5D/J3ajf24Jn67g==",
+  "_location": "/git-sentinel",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "git-sentinel",
+    "name": "git-sentinel",
+    "escapedName": "git-sentinel",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/git-sentinel/-/git-sentinel-0.0.5.tgz",
+  "_shasum": "9fd31bb9f36bf65bc2a97a442d611cd41117c8c1",
+  "_spec": "git-sentinel",
+  "_where": "/home/maxim/projects/my/git-sent",
+  "author": {
+    "name": "606ep"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Configurable git precommit hook",
+  "devDependencies": {
+    "@types/node": "^10.3.5",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "typescript": "^2.9.2"
+  },
+  "keywords": [
+    "git",
+    "precommit"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "git-sentinel",
+  "scripts": {
+    "build": "rm -rf ./dist && ./node_modules/.bin/tsc",
+    "postinstall": "node ./dist/postinstall.js",
+    "publicate": "npm run build && npm publish",
+    "start": "ts-node ./src/run.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.5"
+}

@@ -2,5 +2,8 @@
   "extends": [
     "tslint-config-airbnb",
     "tslint-eslint-rules"
-  ]
+  ],
+  "rules": {
+    "completed-docs": true
+  }
 }

@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import constants from './constants';
 import logger from './lib/logger';
 
-interface IRule {
+export interface IRule {
   name: string;
   mask: string;
   separate?: boolean;
@@ -24,8 +24,8 @@ export default class GitSentinel {
   private errors: {cmd: string, message: string}[] = [];
   private statuses: {cmd: string, success: boolean, message: string}[] = [];
 
-  constructor() {
-    const config = this.findConfig();
+  constructor(cfg?: IConfig) {
+    const config = cfg || this.findConfig();
 
     if (!config) {
       logger.error('sentinel.json not found');

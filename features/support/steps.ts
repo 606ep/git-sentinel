@@ -29,6 +29,11 @@ Given('there are the next rules:', (dataTable) => {
   sinon.stub(sentinel, 'getChangedFiles').callsFake(() => changedFiles);
   sinon.stub(sentinel, 'runCmd').callsFake((cmd) => {
     commands.push(cmd);
+
+    if (cmd.indexOf('error') === -1) {
+      return false;
+    }
+    return true;
   });
 });
 
@@ -43,4 +48,9 @@ When('I fire precommit hook', () => {
 Then('{string} should be run once', (string) => {
   const cmds = commands.filter(el => el === string);
   expect(cmds.length).to.be.equal(1);
+});
+
+Then('{string} should not be run', (string) => {
+  const cmds = commands.filter(el => el === string);
+  expect(cmds.length).to.be.equal(0);
 });

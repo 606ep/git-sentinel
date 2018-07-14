@@ -1,7 +1,7 @@
 Feature: Rule regexp checker
     In order to run rules
     As a git sentinel class
-    I need to find what rules shuld be run based on files changed and regexps
+    I need to find what rules should be run based on files changed and regexps
 
     Background: Rules set
         Given there are the next rules:

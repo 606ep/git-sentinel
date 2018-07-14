@@ -1,7 +1,11 @@
-import { Given } from 'cucumber';
+import { Given, When, Then } from 'cucumber';
 import gitSentinel, { IConfig, IRule } from '../../src/gitSentinel';
+import * as sinon from 'sinon';
+import { expect } from 'chai';
 
 let sentinel;
+let changedFiles: string[] = [];
+let commands: string[] = [];
 
 Given('there are the next rules:', (dataTable) => {
   const cfg: IConfig = {
@@ -11,8 +15,8 @@ Given('there are the next rules:', (dataTable) => {
     const rule:IRule = {
       name: item.name,
       mask: item.mask,
-      stopOnErrors: item.stopOnErrors,
-      separate: item.separate,
+      stopOnErrors: item.stopOnErrors === 'true' ? true : false,
+      separate: item.separate === 'true' ? true : false,
       commands: JSON.parse(item.commands),
     };
 
@@ -20,4 +24,23 @@ Given('there are the next rules:', (dataTable) => {
   }
 
   sentinel = new gitSentinel(cfg);
+  commands = [];
+
+  sinon.stub(sentinel, 'getChangedFiles').callsFake(() => changedFiles);
+  sinon.stub(sentinel, 'runCmd').callsFake((cmd) => {
+    commands.push(cmd);
+  });
+});
+
+Given('the next files changed {string}', (string) => {
+  changedFiles = string.split(',').map(el => el.trim());
+});
+
+When('I fire precommit hook', () => {
+  sentinel.fire();
+});
+
+Then('{string} should be run once', (string) => {
+  const cmds = commands.filter(el => el === string);
+  expect(cmds.length).to.be.equal(1);
 });

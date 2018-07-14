@@ -27,7 +27,9 @@
     "name": "606ep"
   },
   "bundleDependencies": false,
-  "dependencies": {},
+  "dependencies": {
+    "chai": "^4.1.2"
+  },
   "deprecated": false,
   "description": "Configurable git precommit hook",
   "devDependencies": {

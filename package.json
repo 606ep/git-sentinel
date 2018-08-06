@@ -50,6 +50,7 @@
   "license": "ISC",
   "main": "index.js",
   "name": "git-sentinel",
+  "bin": "./dist/run.js",
   "scripts": {
     "build": "rm -rf ./dist && ./node_modules/.bin/tsc",
     "postinstall": "node ./dist/postinstall.js",

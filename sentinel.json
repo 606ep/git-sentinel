@@ -8,6 +8,15 @@
       "commands": [
         "node_modules/.bin/tslint ${filename}"
       ]
+    },
+    {
+      "name": "билдим все",
+      "mask": ".*",
+      "separate": false,
+      "ignoreErrors": true,
+      "commands": [
+        "npm run build"
+      ]
     }
   ]
 }

@@ -1,0 +1,4 @@
+- Add cli interface to run rules to ./node_modules/.bin
+- Set relative path to GitSentinel in precommit-hook file
+- Add rules from several sentinel.json files relative to directories
+- Do not use sentinel.json from node_modules itself (possible resolves with moving to .bin)
